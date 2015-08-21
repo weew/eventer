@@ -7,10 +7,10 @@ use Weew\Events\Subscription;
 
 class SubscriptionTest extends PHPUnit_Framework_TestCase {
     public function test_getters_and_setters() {
-        $sub = new Subscription('foo', 'bar', 'baz');
+        $sub = new Subscription('foo', 'bar', 'ba');
         $this->assertEquals('foo', $sub->getId());
         $this->assertEquals('bar', $sub->getTopic());
-        $this->assertEquals('baz', $sub->getSubscriber());
+        $this->assertEquals('ba', $sub->getSubscriber());
         $sub->setTopic('yolo');
         $sub->setSubscriber('swag');
         $this->assertEquals('yolo', $sub->getTopic());
