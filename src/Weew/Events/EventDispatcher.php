@@ -137,7 +137,7 @@ class EventDispatcher implements IEventDispatcher {
         $description = $subscription->getSubscriber();
 
         if ( ! is_scalar($description)) {
-            $description = 'Callable';
+            $description = 'callable';
         }
 
         throw new Exception(
