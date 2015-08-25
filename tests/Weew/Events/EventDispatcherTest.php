@@ -10,7 +10,7 @@ use Weew\Events\GenericEvent;
 use Weew\Events\EventDispatcher;
 use Weew\Events\IEvent;
 use Weew\Events\Invokers\CallableInvoker;
-use Weew\Events\ISubscription;
+use Weew\Events\IEventSubscription;
 
 class EventDispatcherTest extends PHPUnit_Framework_TestCase {
     public function test_create() {
@@ -24,7 +24,7 @@ class EventDispatcherTest extends PHPUnit_Framework_TestCase {
         $subscription = $dispatcher->subscribe('foo', 'bar');
         $dispatcher->subscribe('foo', 'baz');
 
-        $this->assertTrue($subscription instanceof ISubscription);
+        $this->assertTrue($subscription instanceof IEventSubscription);
         $this->assertEquals(3, count($dispatcher->getSubscriptions()));
         $this->assertEquals('foo', $dispatcher->getSubscriptions()[0]->getSubscriber());
         $this->assertEquals('bar', $dispatcher->getSubscriptions()[1]->getSubscriber());

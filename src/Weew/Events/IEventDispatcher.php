@@ -12,12 +12,12 @@ interface IEventDispatcher {
      * @param $topic
      * @param $abstract
      *
-     * @return ISubscription
+     * @return IEventSubscription
      */
     function subscribe($topic, $abstract);
 
     /**
-     * @param ISubscription $subscription
+     * @param IEventSubscription $subscription
      */
-    function unsubscribe(ISubscription $subscription);
+    function unsubscribe(IEventSubscription $subscription);
 }

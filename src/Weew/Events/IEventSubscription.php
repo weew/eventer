@@ -1,7 +1,7 @@
 <?php
 namespace Weew\Events;
 
-interface ISubscription {
+interface IEventSubscription {
     /**
      * @return int
      */

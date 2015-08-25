@@ -3,11 +3,11 @@
 namespace Tests\Weew\Events;
 
 use PHPUnit_Framework_TestCase;
-use Weew\Events\Subscription;
+use Weew\Events\EventSubscription;
 
 class SubscriptionTest extends PHPUnit_Framework_TestCase {
     public function test_getters_and_setters() {
-        $sub = new Subscription('foo', 'bar', 'ba');
+        $sub = new EventSubscription('foo', 'bar', 'ba');
         $this->assertEquals('foo', $sub->getId());
         $this->assertEquals('bar', $sub->getTopic());
         $this->assertEquals('ba', $sub->getSubscriber());

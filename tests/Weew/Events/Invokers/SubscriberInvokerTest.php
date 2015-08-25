@@ -6,7 +6,7 @@ use PHPUnit_Framework_TestCase;
 use Tests\Weew\Events\Stubs\CustomEvent;
 use Tests\Weew\Events\Stubs\CustomSubscriber;
 use Weew\Events\Invokers\SubscriberInvoker;
-use Weew\Events\Subscription;
+use Weew\Events\EventSubscription;
 
 class SubscriberInvokerTest extends PHPUnit_Framework_TestCase {
     public function test_invoke() {
@@ -15,11 +15,11 @@ class SubscriberInvokerTest extends PHPUnit_Framework_TestCase {
         $event = new CustomEvent();
         $event->setShared($shared);
 
-        $this->assertFalse($invoker->invoke(new Subscription(1, 'foo', 'bla'), $event));
+        $this->assertFalse($invoker->invoke(new EventSubscription(1, 'foo', 'bla'), $event));
         $this->assertEquals([], $shared);
-        $this->assertTrue($invoker->invoke(new Subscription(1, 'foo', CustomSubscriber::class), $event));
+        $this->assertTrue($invoker->invoke(new EventSubscription(1, 'foo', CustomSubscriber::class), $event));
         $this->assertEquals([2], $shared);
-        $this->assertTrue($invoker->invoke(new Subscription(1, 'foo', new CustomSubscriber()), $event));
+        $this->assertTrue($invoker->invoke(new EventSubscription(1, 'foo', new CustomSubscriber()), $event));
         $this->assertEquals([2, 2], $shared);
     }
 }

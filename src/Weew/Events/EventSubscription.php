@@ -2,7 +2,7 @@
 
 namespace Weew\Events;
 
-class Subscription implements ISubscription {
+class EventSubscription implements IEventSubscription {
     /**
      * @var int
      */

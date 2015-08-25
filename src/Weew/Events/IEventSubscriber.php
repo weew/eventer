@@ -2,7 +2,7 @@
 
 namespace Weew\Events;
 
-interface ISubscriber {
+interface IEventSubscriber {
     /**
      * @param IEvent $event
      */

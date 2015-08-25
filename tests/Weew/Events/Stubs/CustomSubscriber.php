@@ -3,9 +3,9 @@
 namespace Tests\Weew\Events\Stubs;
 
 use Weew\Events\IEvent;
-use Weew\Events\ISubscriber;
+use Weew\Events\IEventSubscriber;
 
-class CustomSubscriber implements ISubscriber {
+class CustomSubscriber implements IEventSubscriber {
     public function handle(IEvent $event) {
         $shared = &$event->getShared();
         $shared[] = 2;

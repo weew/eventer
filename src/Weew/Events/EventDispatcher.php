@@ -8,17 +8,17 @@ use Weew\Events\Invokers\SubscriberInvoker;
 
 class EventDispatcher implements IEventDispatcher {
     /**
-     * @var ISubscription[]
+     * @var IEventSubscription[]
      */
     protected $subscriptions = [];
 
     /**
-     * @var ISubscriptionInvoker[]
+     * @var IEventSubscriptionInvoker[]
      */
     protected $invokers = [];
 
     /**
-     * @param ISubscriptionInvoker[] $invokers
+     * @param IEventSubscriptionInvoker[] $invokers
      */
     public function __construct(array $invokers = null) {
         if ( ! is_array($invokers)) {
@@ -59,7 +59,7 @@ class EventDispatcher implements IEventDispatcher {
      * @param string $topic
      * @param $abstract
      *
-     * @return Subscription
+     * @return EventSubscription
      */
     public function subscribe($topic, $abstract) {
         $subscription = $this->createSubscription(
@@ -71,46 +71,46 @@ class EventDispatcher implements IEventDispatcher {
     }
 
     /**
-     * @param ISubscription $subscription
+     * @param IEventSubscription $subscription
      */
-    public function unsubscribe(ISubscription $subscription) {
+    public function unsubscribe(IEventSubscription $subscription) {
         if (array_has($this->subscriptions, $subscription->getId())) {
             array_set($this->subscriptions, $subscription->getId(), null);
         }
     }
 
     /**
-     * @return ISubscription[]
+     * @return IEventSubscription[]
      */
     public function getSubscriptions() {
         return $this->subscriptions;
     }
 
     /**
-     * @param ISubscription[] $subscriptions
+     * @param IEventSubscription[] $subscriptions
      */
     public function setSubscriptions(array $subscriptions) {
         $this->subscriptions = $subscriptions;
     }
 
     /**
-     * @return ISubscriptionInvoker[]
+     * @return IEventSubscriptionInvoker[]
      */
     public function getSubscriptionInvokers() {
         return $this->invokers;
     }
 
     /**
-     * @param ISubscriptionInvoker[] $invokers
+     * @param IEventSubscriptionInvoker[] $invokers
      */
     public function setSubscriptionInvokers(array $invokers) {
         $this->invokers = $invokers;
     }
 
     /**
-     * @param ISubscriptionInvoker $invoker
+     * @param IEventSubscriptionInvoker $invoker
      */
-    public function addSubscriptionInvoker(ISubscriptionInvoker $invoker) {
+    public function addSubscriptionInvoker(IEventSubscriptionInvoker $invoker) {
         $this->invokers[] = $invoker;
     }
 
@@ -122,12 +122,12 @@ class EventDispatcher implements IEventDispatcher {
     }
 
     /**
-     * @param ISubscription $subscription
+     * @param IEventSubscription $subscription
      * @param IEvent $event
      *
      * @throws Exception
      */
-    protected function invokeSubscription(ISubscription $subscription, IEvent $event) {
+    protected function invokeSubscription(IEventSubscription $subscription, IEvent $event) {
         foreach ($this->invokers as $invoker) {
             if ($invoker->invoke($subscription, $event)) {
                 return;
@@ -150,16 +150,16 @@ class EventDispatcher implements IEventDispatcher {
      * @param $topic
      * @param $subscriber
      *
-     * @return Subscription
+     * @return EventSubscription
      */
     protected function createSubscription($id, $topic, $subscriber) {
-        return new Subscription(
+        return new EventSubscription(
             $id, $topic, $subscriber
         );
     }
 
     /**
-     * @return ISubscriptionInvoker[]
+     * @return IEventSubscriptionInvoker[]
      */
     protected function createDefaultInvokers() {
         return [
