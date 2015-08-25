@@ -2,7 +2,7 @@
 
 namespace Weew\Events;
 
-class Event implements IEvent {
+abstract class Event implements IEvent {
     /**
      * @var string
      */

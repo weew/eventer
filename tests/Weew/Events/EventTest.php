@@ -3,18 +3,18 @@
 namespace Tests\Weew\Events;
 
 use PHPUnit_Framework_TestCase;
-use Weew\Events\Event;
+use Weew\Events\GenericEvent;
 
 class EventTest extends PHPUnit_Framework_TestCase {
     public function test_get_and_set_name() {
-        $event = new Event();
+        $event = new GenericEvent();
         $this->assertEquals(get_class($event), $event->getName());
         $event->setName('bar');
         $this->assertEquals('bar', $event->getName());
     }
 
     public function test_status() {
-        $event = new Event();
+        $event = new GenericEvent();
         $this->assertTrue($event->isActive());
         $this->assertFalse($event->isHandled());
         $event->handle();
@@ -23,7 +23,7 @@ class EventTest extends PHPUnit_Framework_TestCase {
     }
 
     public function test_get_and_set_data() {
-        $event = new Event();
+        $event = new GenericEvent();
         $event->setData(['bar' => 'foo']);
         $this->assertEquals(['bar' => 'foo'], $event->getData());
         $this->assertEquals('foo', $event->get('bar'));
