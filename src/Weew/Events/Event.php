@@ -6,7 +6,7 @@ class Event implements IEvent {
     /**
      * @var string
      */
-    protected $topic;
+    protected $name;
 
     /**
      * @var array
@@ -55,19 +55,19 @@ class Event implements IEvent {
     /**
      * @return string
      */
-    public function getTopic() {
-        if ($this->topic === null) {
+    public function getName() {
+        if ($this->name === null) {
             return get_class($this);
         }
 
-        return $this->topic;
+        return $this->name;
     }
 
     /**
-     * @param $topic
+     * @param $name
      */
-    public function setTopic($topic) {
-        $this->topic = $topic;
+    public function setName($name) {
+        $this->name = $name;
     }
 
     /**

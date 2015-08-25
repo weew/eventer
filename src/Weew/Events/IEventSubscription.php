@@ -10,12 +10,12 @@ interface IEventSubscription {
     /**
      * @return string
      */
-    function getTopic();
+    function getEventName();
 
     /**
-     * @param $topic
+     * @param $eventName
      */
-    function setTopic($topic);
+    function setEventName($eventName);
 
     /**
      * @return mixed

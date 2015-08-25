@@ -6,11 +6,11 @@ use PHPUnit_Framework_TestCase;
 use Weew\Events\Event;
 
 class EventTest extends PHPUnit_Framework_TestCase {
-    public function test_get_and_set_topic() {
+    public function test_get_and_set_name() {
         $event = new Event();
-        $this->assertEquals(get_class($event), $event->getTopic());
-        $event->setTopic('bar');
-        $this->assertEquals('bar', $event->getTopic());
+        $this->assertEquals(get_class($event), $event->getName());
+        $event->setName('bar');
+        $this->assertEquals('bar', $event->getName());
     }
 
     public function test_status() {

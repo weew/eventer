@@ -46,7 +46,7 @@ class EventDispatcher implements IEventDispatcher {
             }
 
             if ($subscription === null ||
-                $subscription->getTopic() !== $event->getTopic()
+                $subscription->getEventName() !== $event->getName()
             ) {
                 continue;
             }
@@ -56,14 +56,14 @@ class EventDispatcher implements IEventDispatcher {
     }
 
     /**
-     * @param string $topic
+     * @param string $eventName
      * @param $abstract
      *
      * @return EventSubscription
      */
-    public function subscribe($topic, $abstract) {
+    public function subscribe($eventName, $abstract) {
         $subscription = $this->createSubscription(
-            $this->generateSubscriptionId(), $topic, $abstract
+            $this->generateSubscriptionId(), $eventName, $abstract
         );
         $this->subscriptions[$subscription->getId()] = $subscription;
 
@@ -147,14 +147,14 @@ class EventDispatcher implements IEventDispatcher {
 
     /**
      * @param $id
-     * @param $topic
+     * @param $eventName
      * @param $subscriber
      *
      * @return EventSubscription
      */
-    protected function createSubscription($id, $topic, $subscriber) {
+    protected function createSubscription($id, $eventName, $subscriber) {
         return new EventSubscription(
-            $id, $topic, $subscriber
+            $id, $eventName, $subscriber
         );
     }
 
@@ -169,12 +169,12 @@ class EventDispatcher implements IEventDispatcher {
     }
 
     /**
-     * @param $topic
+     * @param $eventName
      * @param array $data
      *
      * @return GenericEvent
      */
-    protected function createEvent($topic, array $data = []) {
-        return new GenericEvent($topic, $data);
+    protected function createEvent($eventName, array $data = []) {
+        return new GenericEvent($eventName, $data);
     }
 }

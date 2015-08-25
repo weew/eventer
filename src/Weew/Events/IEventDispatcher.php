@@ -9,12 +9,12 @@ interface IEventDispatcher {
     function dispatch($event);
 
     /**
-     * @param $topic
+     * @param $eventName
      * @param $abstract
      *
      * @return IEventSubscription
      */
-    function subscribe($topic, $abstract);
+    function subscribe($eventName, $abstract);
 
     /**
      * @param IEventSubscription $subscription

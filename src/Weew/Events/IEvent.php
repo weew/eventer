@@ -32,12 +32,12 @@ interface IEvent {
     /**
      * @return string
      */
-    function getTopic();
+    function getName();
 
     /**
-     * @param $topic
+     * @param $name
      */
-    function setTopic($topic);
+    function setName($name);
 
     /**
      * @return array

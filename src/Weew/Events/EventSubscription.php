@@ -11,7 +11,7 @@ class EventSubscription implements IEventSubscription {
     /**
      * @var string
      */
-    protected $topic;
+    protected $eventName;
 
     /**
      * @var mixed
@@ -20,12 +20,12 @@ class EventSubscription implements IEventSubscription {
 
     /**
      * @param $id
-     * @param $topic
+     * @param $eventName
      * @param $subscriber
      */
-    public function __construct($id, $topic, $subscriber) {
+    public function __construct($id, $eventName, $subscriber) {
         $this->id = $id;
-        $this->setTopic($topic);
+        $this->setEventName($eventName);
         $this->setSubscriber($subscriber);
     }
 
@@ -39,15 +39,15 @@ class EventSubscription implements IEventSubscription {
     /**
      * @return string
      */
-    public function getTopic() {
-        return $this->topic;
+    public function getEventName() {
+        return $this->eventName;
     }
 
     /**
-     * @param $topic
+     * @param $eventName
      */
-    public function setTopic($topic) {
-        $this->topic = $topic;
+    public function setEventName($eventName) {
+        $this->eventName = $eventName;
     }
 
     /**

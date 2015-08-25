@@ -6,9 +6,9 @@ use PHPUnit_Framework_TestCase;
 use Weew\Events\GenericEvent;
 
 class GenericEventTest extends PHPUnit_Framework_TestCase {
-    public function test_create_with_topic() {
+    public function test_create_with_name() {
         $event = new GenericEvent('foo');
-        $this->assertEquals('foo', $event->getTopic());
+        $this->assertEquals('foo', $event->getName());
     }
 
     public function test_create_with_data() {

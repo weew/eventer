@@ -4,11 +4,11 @@ namespace Weew\Events;
 
 class GenericEvent extends Event {
     /**
-     * @param $topic
+     * @param $name
      * @param array $data
      */
-    public function __construct($topic = null, array $data = []) {
-        $this->setTopic($topic);
+    public function __construct($name = null, array $data = []) {
+        $this->setName($name);
         $this->setData($data);
     }
 }

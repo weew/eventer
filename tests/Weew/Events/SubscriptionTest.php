@@ -9,11 +9,11 @@ class SubscriptionTest extends PHPUnit_Framework_TestCase {
     public function test_getters_and_setters() {
         $sub = new EventSubscription('foo', 'bar', 'ba');
         $this->assertEquals('foo', $sub->getId());
-        $this->assertEquals('bar', $sub->getTopic());
+        $this->assertEquals('bar', $sub->getEventName());
         $this->assertEquals('ba', $sub->getSubscriber());
-        $sub->setTopic('yolo');
+        $sub->setEventName('yolo');
         $sub->setSubscriber('swag');
-        $this->assertEquals('yolo', $sub->getTopic());
+        $this->assertEquals('yolo', $sub->getEventName());
         $this->assertEquals('swag', $sub->getSubscriber());
     }
 }
