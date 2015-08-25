@@ -4,6 +4,7 @@ namespace Tests\Weew\Events;
 
 use PHPUnit_Framework_TestCase;
 use Exception;
+use Tests\Weew\Events\Stubs\AnotherSubscriber;
 use Tests\Weew\Events\Stubs\CustomEvent;
 use Tests\Weew\Events\Stubs\CustomSubscriber;
 use Weew\Events\GenericEvent;
@@ -54,7 +55,8 @@ class EventDispatcherTest extends PHPUnit_Framework_TestCase {
 
     public function test_get_and_set_subscription_invokers() {
         $dispatcher = new EventDispatcher([]);
-        $dispatcher->subscribe('foo', function() {});
+        $dispatcher->subscribe('foo', function () {
+        });
         $event = new GenericEvent('foo');
 
         $this->assertEquals([], $dispatcher->getSubscriptionInvokers());
@@ -75,15 +77,15 @@ class EventDispatcherTest extends PHPUnit_Framework_TestCase {
         $shared = [];
         $dispatcher = new EventDispatcher();
 
-        $dispatcher->subscribe('foo', function(IEvent $event) use (&$shared) {
+        $dispatcher->subscribe('foo', function (IEvent $event) use (&$shared) {
             $shared[] = 1;
         });
 
-        $dispatcher->subscribe('foo', function(IEvent $event) use (&$shared) {
+        $dispatcher->subscribe('foo', function (IEvent $event) use (&$shared) {
             $shared[] = 2;
         });
 
-        $dispatcher->subscribe('bar', function(IEvent $event) use (&$shared) {
+        $dispatcher->subscribe('bar', function (IEvent $event) use (&$shared) {
             $shared[] = $event->get('shared');
         });
 
@@ -101,16 +103,16 @@ class EventDispatcherTest extends PHPUnit_Framework_TestCase {
         $shared = [];
         $dispatcher = new EventDispatcher();
 
-        $dispatcher->subscribe('foo', function(IEvent $event) use (&$shared) {
+        $dispatcher->subscribe('foo', function (IEvent $event) use (&$shared) {
             $shared[] = 1;
         });
 
-        $dispatcher->subscribe('foo', function(IEvent $event) use (&$shared) {
+        $dispatcher->subscribe('foo', function (IEvent $event) use (&$shared) {
             $shared[] = 2;
             $event->handle();
         });
 
-        $dispatcher->subscribe('foo', function(IEvent $event) use (&$shared) {
+        $dispatcher->subscribe('foo', function (IEvent $event) use (&$shared) {
             $shared[] = 3;
         });
 
@@ -122,7 +124,7 @@ class EventDispatcherTest extends PHPUnit_Framework_TestCase {
         $shared = [];
         $dispatcher = new EventDispatcher();
 
-        $dispatcher->subscribe(CustomEvent::class, function(CustomEvent $event) use (&$shared) {
+        $dispatcher->subscribe(CustomEvent::class, function (CustomEvent $event) use (&$shared) {
             $shared[] = $event->getFoo();
         });
 
@@ -133,7 +135,7 @@ class EventDispatcherTest extends PHPUnit_Framework_TestCase {
     public function test_invoke_subscriber() {
         $shared = [];
         $dispatcher = new EventDispatcher();
-        $dispatcher->subscribe(CustomEvent::class, function(CustomEvent $event) use (&$shared) {
+        $dispatcher->subscribe(CustomEvent::class, function (CustomEvent $event) use (&$shared) {
             $shared[] = 1;
         });
         $dispatcher->dispatch(new CustomEvent());
