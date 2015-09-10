@@ -34,7 +34,7 @@ class SubscriberInvoker implements IEventSubscriptionInvoker {
      */
     protected function invokeSubscriberByInstance($subscriber, IEvent $event) {
         if ($subscriber instanceof IEventSubscriber) {
-            $subscriber->handle($event);
+            $this->invokeSubscriber($subscriber, $event);
 
             return true;
         }
@@ -54,12 +54,29 @@ class SubscriberInvoker implements IEventSubscriptionInvoker {
             in_array(IEventSubscriber::class, class_implements($subscriber))
         ) {
             /** @var IEventSubscriber $subscriber */
-            $subscriber = new $subscriber();
-            $subscriber->handle($event);
+            $subscriber = $this->createSubscriber($subscriber);
+            $this->invokeSubscriber($subscriber, $event);
 
             return true;
         }
 
         return false;
+    }
+
+    /**
+     * @param $class
+     *
+     * @return IEventSubscriber
+     */
+    protected function createSubscriber($class) {
+        return new $class();
+    }
+
+    /**
+     * @param IEventSubscriber $subscriber
+     * @param IEvent $event
+     */
+    protected function invokeSubscriber(IEventSubscriber $subscriber, IEvent $event) {
+        $subscriber->handle($event);
     }
 }

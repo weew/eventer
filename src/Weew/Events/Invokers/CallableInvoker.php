@@ -17,11 +17,19 @@ class CallableInvoker implements IEventSubscriptionInvoker {
         $subscriber = $subscription->getSubscriber();
 
         if (is_callable($subscriber)) {
-            $subscriber($event);
+            $this->invokeSubscriber($subscriber, $event);
 
             return true;
         }
 
         return false;
+    }
+
+    /**
+     * @param callable $subscriber
+     * @param IEvent $event
+     */
+    protected function invokeSubscriber(callable $subscriber, IEvent $event) {
+        $subscriber($event);
     }
 }
