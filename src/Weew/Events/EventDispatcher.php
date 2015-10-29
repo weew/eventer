@@ -134,11 +134,7 @@ class EventDispatcher implements IEventDispatcher {
             }
         }
 
-        $description = $subscription->getSubscriber();
-
-        if ( ! is_scalar($description)) {
-            $description = 'callable';
-        }
+        $description = get_type($subscription->getSubscriber());
 
         throw new Exception(
             s('Could not invoke subscriber %s.', $description)
