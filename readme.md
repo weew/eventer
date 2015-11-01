@@ -1,9 +1,11 @@
 # Simple event system
 
-[![Build Status](https://travis-ci.org/weew/php-events.svg?branch=master)](https://travis-ci.org/weew/php-events)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/weew/php-events/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/weew/php-events/?branch=master)
-[![Coverage Status](https://coveralls.io/repos/weew/php-events/badge.svg?branch=master&service=github)](https://coveralls.io/github/weew/php-events?branch=master)
-[![License](https://poser.pugx.org/weew/php-events/license)](https://packagist.org/packages/weew/php-events)
+[![Build Status](https://img.shields.io/travis/weew/php-events.svg)](https://travis-ci.org/weew/php-events)
+[![Code Quality](https://img.shields.io/scrutinizer/g/weew/php-events.svg)](https://scrutinizer-ci.com/g/weew/php-events)
+[![Test Coverage](https://img.shields.io/coveralls/weew/php-events.svg)](https://coveralls.io/github/weew/php-events)
+[![Dependencies](https://img.shields.io/versioneye/d/php/weew:php-events.svg)](https://versioneye.com/php/weew:php-events)
+[![Version](https://img.shields.io/packagist/v/weew/php-events.svg)](https://packagist.org/packages/weew/php-events)
+[![Licence](https://img.shields.io/packagist/l/weew/php-events.svg)](https://packagist.org/packages/weew/php-events)
 
 ## Table of contents
 
