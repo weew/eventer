@@ -134,10 +134,9 @@ class EventDispatcher implements IEventDispatcher {
             }
         }
 
-        $description = get_type($subscription->getSubscriber());
-
         throw new Exception(
-            s('Could not invoke subscriber %s.', $description)
+            s('Could not invoke subscriber %s.',
+                get_type($subscription->getSubscriber()))
         );
     }
 
