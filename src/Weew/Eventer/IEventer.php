@@ -1,8 +1,8 @@
 <?php
 
-namespace Weew\Events;
+namespace Weew\Eventer;
 
-interface IEventDispatcher {
+interface IEventer {
     /**
      * @param $event
      */

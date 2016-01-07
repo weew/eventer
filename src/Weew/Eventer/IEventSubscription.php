@@ -1,5 +1,5 @@
 <?php
-namespace Weew\Events;
+namespace Weew\Eventer;
 
 interface IEventSubscription {
     /**

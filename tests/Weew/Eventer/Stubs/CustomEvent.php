@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests\Weew\Events\Stubs;
+namespace Tests\Weew\Eventer\Stubs;
 
-use Weew\Events\Event;
+use Weew\Eventer\Event;
 
 class CustomEvent extends Event {
     private $shared;

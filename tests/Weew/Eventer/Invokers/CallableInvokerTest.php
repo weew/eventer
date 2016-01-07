@@ -1,11 +1,11 @@
 <?php
 
-namespace Tests\Weew\Events\Invokers;
+namespace Tests\Weew\Eventer\Invokers;
 
 use PHPUnit_Framework_TestCase;
-use Weew\Events\GenericEvent;
-use Weew\Events\Invokers\CallableInvoker;
-use Weew\Events\EventSubscription;
+use Weew\Eventer\GenericEvent;
+use Weew\Eventer\Invokers\CallableInvoker;
+use Weew\Eventer\EventSubscription;
 
 class CallableInvokerTest extends PHPUnit_Framework_TestCase {
     public function test_invoke() {

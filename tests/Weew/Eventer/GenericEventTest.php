@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\Weew\Events;
+namespace Tests\Weew\Eventer;
 
 use PHPUnit_Framework_TestCase;
-use Weew\Events\GenericEvent;
+use Weew\Eventer\GenericEvent;
 
 class GenericEventTest extends PHPUnit_Framework_TestCase {
     public function test_create_with_name() {

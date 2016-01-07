@@ -1,6 +1,6 @@
 <?php
 
-namespace Weew\Events;
+namespace Weew\Eventer;
 
 abstract class Event implements IEvent {
     /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace Weew\Events;
+namespace Weew\Eventer;
 
 class EventStatus {
     const ACTIVE = 'active';

@@ -1,11 +1,11 @@
 # Simple event system
 
-[![Build Status](https://img.shields.io/travis/weew/php-events.svg)](https://travis-ci.org/weew/php-events)
-[![Code Quality](https://img.shields.io/scrutinizer/g/weew/php-events.svg)](https://scrutinizer-ci.com/g/weew/php-events)
-[![Test Coverage](https://img.shields.io/coveralls/weew/php-events.svg)](https://coveralls.io/github/weew/php-events)
-[![Dependencies](https://img.shields.io/versioneye/d/php/weew:php-events.svg)](https://versioneye.com/php/weew:php-events)
-[![Version](https://img.shields.io/packagist/v/weew/php-events.svg)](https://packagist.org/packages/weew/php-events)
-[![Licence](https://img.shields.io/packagist/l/weew/php-events.svg)](https://packagist.org/packages/weew/php-events)
+[![Build Status](https://img.shields.io/travis/weew/php-eventer.svg)](https://travis-ci.org/weew/php-eventer)
+[![Code Quality](https://img.shields.io/scrutinizer/g/weew/php-eventer.svg)](https://scrutinizer-ci.com/g/weew/php-eventer)
+[![Test Coverage](https://img.shields.io/coveralls/weew/php-eventer.svg)](https://coveralls.io/github/weew/php-eventer)
+[![Dependencies](https://img.shields.io/versioneye/d/php/weew:php-eventer.svg)](https://versioneye.com/php/weew:php-eventer)
+[![Version](https://img.shields.io/packagist/v/weew/php-eventer.svg)](https://packagist.org/packages/weew/php-eventer)
+[![Licence](https://img.shields.io/packagist/l/weew/php-eventer.svg)](https://packagist.org/packages/weew/php-eventer)
 
 ## Table of contents
 
@@ -20,7 +20,7 @@
 
 ## Installation
 
-`composer install weew/php-events`
+`composer install weew/php-eventer`
 
 ## Usage
 
@@ -33,12 +33,12 @@ is by using a string as the event name.
 The easiest way to create a subscription is to use callback function.
 
 ```php
-$dispatcher = new EventDispatcher();
-$dispatcher->subscribe('event.name', function(IEvent $event) {
+$eventer = new Eventer();
+$eventer->subscribe('event.name', function(IEvent $event) {
     echo $event->getName();
     // event.name
 });
-$dispatcher->dispatch('event.name');
+$eventer->dispatch('event.name');
 ```
 
 ### Attaching data to an event
@@ -47,8 +47,8 @@ Mostly you want to throw an event with particular data attached. The quickest wa
 to achieve this is to use the generic events.
 
 ```php
-$dispatcher = new EventDispatcher();
-$dispatcher->subscribe('event.name', function(IEvent $event) {
+$eventer = new Eventer();
+$eventer->subscribe('event.name', function(IEvent $event) {
     var_dump($event->getData());
     // ['secret' => 'secret value']
     echo $event->get('secret');
@@ -60,7 +60,7 @@ $event = new GenericEvent('event.name', ['secret' => 'secret value']);
 $event = new GenericEvent('event.name');
 $event->set('secret', 'secret value');
 
-$dispatcher->dispatch($event);
+$eventer->dispatch($event);
 ```
 
 ### Creating custom events
@@ -77,13 +77,13 @@ class CustomEvent extends Event {
     }
 }
 
-$dispatcher = new EventDispatcher();
-$dispatcher->subscribe(CustomEvent::class, function(CustomEvent $event) {
+$eventer = new Eventer();
+$eventer->subscribe(CustomEvent::class, function(CustomEvent $event) {
     echo $event->getSecret();
     // secret value
 });
 
-$dispatcher->dispatch(new CustomEvent());
+$eventer->dispatch(new CustomEvent());
 ```
 
 ### Unsubscribing from events
@@ -92,9 +92,9 @@ To unsubscribe from an event you can simply pass the subscription object
 to the unsubscribe method on the event dispatcher.
 
 ```php
-$dispatcher = new EventDispatcher();
-$subscription = $dispatcher->subscribe('event.name', 'abstract.value');
-$dispatcher->unsubscribe($subscription);
+$eventer = new Eventer();
+$subscription = $eventer->subscribe('event.name', 'abstract.value');
+$eventer->unsubscribe($subscription);
 ```
 
 ### Event subscribers
@@ -118,11 +118,11 @@ class CustomEventSubscriber implements IEventSubscriber {
     }
 }
 
-$dispatcher = new EventDispatcher();
-$dispatcher->subscribe(CustomEvent::class, CustomEventSubscriber::class);
-$dispatcher->dispatch(new CustomEvent());
+$eventer = new Eventer();
+$eventer->subscribe(CustomEvent::class, CustomEventSubscriber::class);
+$eventer->dispatch(new CustomEvent());
 ```
 
 ## Existing container integrations
 
-There is an integration for the [weew/php-container](https://github.com/weew/php-container). See [php-events-container-aware](https://github.com/weew/php-events-container-aware).
+There is an integration for the [weew/php-container](https://github.com/weew/php-container). See [php-eventer-container-aware](https://github.com/weew/php-eventer-container-aware).

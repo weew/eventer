@@ -1,12 +1,12 @@
 <?php
 
-namespace Tests\Weew\Events\Invokers;
+namespace Tests\Weew\Eventer\Invokers;
 
 use PHPUnit_Framework_TestCase;
-use Tests\Weew\Events\Stubs\CustomEvent;
-use Tests\Weew\Events\Stubs\CustomSubscriber;
-use Weew\Events\Invokers\SubscriberInvoker;
-use Weew\Events\EventSubscription;
+use Tests\Weew\Eventer\Stubs\CustomEvent;
+use Tests\Weew\Eventer\Stubs\CustomSubscriber;
+use Weew\Eventer\Invokers\SubscriberInvoker;
+use Weew\Eventer\EventSubscription;
 
 class SubscriberInvokerTest extends PHPUnit_Framework_TestCase {
     public function test_invoke() {

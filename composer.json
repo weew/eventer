@@ -1,5 +1,5 @@
 {
-    "name": "weew/php-events",
+    "name": "weew/php-eventer",
     "description": "Simple event system.",
     "license": "MIT",
     "authors": [

@@ -1,10 +1,10 @@
 <?php
 
-namespace Weew\Events\Invokers;
+namespace Weew\Eventer\Invokers;
 
-use Weew\Events\IEvent;
-use Weew\Events\IEventSubscriptionInvoker;
-use Weew\Events\IEventSubscription;
+use Weew\Eventer\IEvent;
+use Weew\Eventer\IEventSubscriptionInvoker;
+use Weew\Eventer\IEventSubscription;
 
 class CallableInvoker implements IEventSubscriptionInvoker {
     /**

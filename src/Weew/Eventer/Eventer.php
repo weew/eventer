@@ -1,12 +1,12 @@
 <?php
 
-namespace Weew\Events;
+namespace Weew\Eventer;
 
 use Exception;
-use Weew\Events\Invokers\CallableInvoker;
-use Weew\Events\Invokers\SubscriberInvoker;
+use Weew\Eventer\Invokers\CallableInvoker;
+use Weew\Eventer\Invokers\SubscriberInvoker;
 
-class EventDispatcher implements IEventDispatcher {
+class Eventer implements IEventer {
     /**
      * @var IEventSubscription[]
      */

@@ -1,11 +1,11 @@
 <?php
 
-namespace Weew\Events\Invokers;
+namespace Weew\Eventer\Invokers;
 
-use Weew\Events\IEvent;
-use Weew\Events\IEventSubscriptionInvoker;
-use Weew\Events\IEventSubscriber;
-use Weew\Events\IEventSubscription;
+use Weew\Eventer\IEvent;
+use Weew\Eventer\IEventSubscriptionInvoker;
+use Weew\Eventer\IEventSubscriber;
+use Weew\Eventer\IEventSubscription;
 
 class SubscriberInvoker implements IEventSubscriptionInvoker {
     /**

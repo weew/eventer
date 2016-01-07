@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\Weew\Events\Stubs;
+namespace Tests\Weew\Eventer\Stubs;
 
-use Weew\Events\IEvent;
-use Weew\Events\IEventSubscriber;
+use Weew\Eventer\IEvent;
+use Weew\Eventer\IEventSubscriber;
 
 class CustomSubscriber implements IEventSubscriber {
     public function handle(IEvent $event) {
