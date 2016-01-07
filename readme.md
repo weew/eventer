@@ -3,7 +3,6 @@
 [![Build Status](https://img.shields.io/travis/weew/php-eventer.svg)](https://travis-ci.org/weew/php-eventer)
 [![Code Quality](https://img.shields.io/scrutinizer/g/weew/php-eventer.svg)](https://scrutinizer-ci.com/g/weew/php-eventer)
 [![Test Coverage](https://img.shields.io/coveralls/weew/php-eventer.svg)](https://coveralls.io/github/weew/php-eventer)
-[![Dependencies](https://img.shields.io/versioneye/d/php/weew:php-eventer.svg)](https://versioneye.com/php/weew:php-eventer)
 [![Version](https://img.shields.io/packagist/v/weew/php-eventer.svg)](https://packagist.org/packages/weew/php-eventer)
 [![Licence](https://img.shields.io/packagist/l/weew/php-eventer.svg)](https://packagist.org/packages/weew/php-eventer)
 
