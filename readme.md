@@ -24,7 +24,7 @@
 
 ## Usage
 
-The event system allows you to easily subscribe to certain events and get
+This event system allows you to easily subscribe to certain events and get
 notified as soon as one occurs. The most simple way to subscribe to an event
 is by using a string as the event name.
 
