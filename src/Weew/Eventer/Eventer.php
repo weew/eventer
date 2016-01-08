@@ -33,6 +33,7 @@ class Eventer implements IEventer {
     /**
      * @param $event
      *
+     * @return IEvent
      * @throws Exception
      */
     public function dispatch($event) {
@@ -42,7 +43,7 @@ class Eventer implements IEventer {
 
         foreach ($this->subscriptions as $subscription) {
             if ( ! $event->isActive()) {
-                return;
+                return $event;
             }
 
             if ($subscription === null ||
@@ -53,6 +54,8 @@ class Eventer implements IEventer {
 
             $this->invokeSubscription($subscription, $event);
         }
+
+        return $event;
     }
 
     /**
@@ -167,7 +170,7 @@ class Eventer implements IEventer {
      * @param $eventName
      * @param array $data
      *
-     * @return GenericEvent
+     * @return IEvent
      */
     protected function createEvent($eventName, array $data = []) {
         return new GenericEvent($eventName, $data);

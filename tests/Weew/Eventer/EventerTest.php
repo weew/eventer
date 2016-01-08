@@ -132,6 +132,23 @@ class EventerTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals(['foo'], $shared);
     }
 
+    public function test_dispatch_returns_event() {
+        $eventer = new Eventer();
+        $event = new GenericEvent('foo');
+        $this->assertTrue($eventer->dispatch($event) === $event);
+    }
+
+    public function test_dispatch_returns_handled_event_event() {
+        $eventer = new Eventer();
+        $event = new GenericEvent('foo');
+
+        $eventer->subscribe($event->getName(), function(IEvent $event) {
+            $event->handle();
+        });
+
+        $this->assertTrue($eventer->dispatch($event) === $event);
+    }
+
     public function test_invoke_subscriber() {
         $shared = [];
         $eventer = new Eventer();
