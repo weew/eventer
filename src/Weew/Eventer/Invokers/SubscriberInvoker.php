@@ -4,7 +4,6 @@ namespace Weew\Eventer\Invokers;
 
 use Weew\Eventer\IEvent;
 use Weew\Eventer\IEventSubscriptionInvoker;
-use Weew\Eventer\IEventSubscriber;
 use Weew\Eventer\IEventSubscription;
 
 class SubscriberInvoker implements IEventSubscriptionInvoker {
@@ -33,7 +32,7 @@ class SubscriberInvoker implements IEventSubscriptionInvoker {
      * @return bool
      */
     protected function invokeSubscriberByInstance($subscriber, IEvent $event) {
-        if ($subscriber instanceof IEventSubscriber) {
+        if (is_object($subscriber) && method_exists($subscriber, 'handle')) {
             $this->invokeSubscriber($subscriber, $event);
 
             return true;
@@ -51,9 +50,8 @@ class SubscriberInvoker implements IEventSubscriptionInvoker {
     protected function invokeSubscriberByClassName($subscriber, IEvent $event) {
         if (is_string($subscriber) &&
             class_exists($subscriber) &&
-            in_array(IEventSubscriber::class, class_implements($subscriber))
+            method_exists($subscriber, 'handle')
         ) {
-            /** @var IEventSubscriber $subscriber */
             $subscriber = $this->createSubscriber($subscriber);
             $this->invokeSubscriber($subscriber, $event);
 
@@ -66,17 +64,17 @@ class SubscriberInvoker implements IEventSubscriptionInvoker {
     /**
      * @param $class
      *
-     * @return IEventSubscriber
+     * @return object
      */
     protected function createSubscriber($class) {
         return new $class();
     }
 
     /**
-     * @param IEventSubscriber $subscriber
+     * @param object $subscriber
      * @param IEvent $event
      */
-    protected function invokeSubscriber(IEventSubscriber $subscriber, IEvent $event) {
+    protected function invokeSubscriber($subscriber, IEvent $event) {
         $subscriber->handle($event);
     }
 }

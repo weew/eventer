@@ -98,9 +98,7 @@ $eventer->unsubscribe($subscription);
 
 ### Event subscribers
 
-Using callbacks in your events might not always be an optimal solution.
-Therefore you can create event subscriber classes that get called whenever an event
-occurs.
+Using callbacks in your events might not always be an optimal solution. Therefore you can create event subscriber classes that get called whenever an event occurs. The class must have the `handle(IEvent $event)` method, but there is no specific interface that you are forced to implement.
 
 ```php
 class CustomEvent extends Event {
@@ -109,7 +107,7 @@ class CustomEvent extends Event {
     }
 }
 
-class CustomEventSubscriber implements IEventSubscriber {
+class CustomEventSubscriber {
     public function handle(IEvent $event) {
         /** @var CustomEvent $event */
         echo $event->getSecret();
