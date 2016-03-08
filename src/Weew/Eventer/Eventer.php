@@ -137,9 +137,11 @@ class Eventer implements IEventer {
             }
         }
 
+        $subscriber = $subscription->getSubscriber();
+
         throw new Exception(
-            s('Could not invoke subscriber %s.',
-                get_type($subscription->getSubscriber()))
+            s('Could not invoke subscriber "%s".',
+                is_scalar($subscriber) ? $subscriber : get_type($subscriber))
         );
     }
 
