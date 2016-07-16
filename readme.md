@@ -1,10 +1,10 @@
 # Simple event system
 
-[![Build Status](https://img.shields.io/travis/weew/php-eventer.svg)](https://travis-ci.org/weew/php-eventer)
-[![Code Quality](https://img.shields.io/scrutinizer/g/weew/php-eventer.svg)](https://scrutinizer-ci.com/g/weew/php-eventer)
-[![Test Coverage](https://img.shields.io/coveralls/weew/php-eventer.svg)](https://coveralls.io/github/weew/php-eventer)
-[![Version](https://img.shields.io/packagist/v/weew/php-eventer.svg)](https://packagist.org/packages/weew/php-eventer)
-[![Licence](https://img.shields.io/packagist/l/weew/php-eventer.svg)](https://packagist.org/packages/weew/php-eventer)
+[![Build Status](https://img.shields.io/travis/weew/eventer.svg)](https://travis-ci.org/weew/eventer)
+[![Code Quality](https://img.shields.io/scrutinizer/g/weew/eventer.svg)](https://scrutinizer-ci.com/g/weew/eventer)
+[![Test Coverage](https://img.shields.io/coveralls/weew/eventer.svg)](https://coveralls.io/github/weew/eventer)
+[![Version](https://img.shields.io/packagist/v/weew/eventer.svg)](https://packagist.org/packages/weew/eventer)
+[![Licence](https://img.shields.io/packagist/l/weew/eventer.svg)](https://packagist.org/packages/weew/eventer)
 
 ## Table of contents
 
@@ -19,7 +19,7 @@
 
 ## Installation
 
-`composer install weew/php-eventer`
+`composer install weew/eventer`
 
 ## Usage
 
@@ -122,4 +122,4 @@ $eventer->dispatch(new CustomEvent());
 
 ## Existing container integrations
 
-There is an integration for the [weew/php-container](https://github.com/weew/php-container). See [php-eventer-container-aware](https://github.com/weew/php-eventer-container-aware).
+There is an integration for the [weew/container](https://github.com/weew/container). See [eventer-container-aware](https://github.com/weew/eventer-container-aware).
